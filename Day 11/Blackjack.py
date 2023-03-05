@@ -19,6 +19,30 @@ def sum_of_list(lists):
         sum+=i
     return sum
 
+def blackjack(deck):
+    if sum_of_list(deck)==21 and len(deck)==2:
+        return 0 
+    
+def compare():
+    if sum_of_list(user)==sum_of_list(computer):
+            print('Game Drawn!')
+    elif blackjack(user)==0:
+            print('You Win with a Blackjack!')
+    elif blackjack(computer)==0:
+            print('You Lose, Opponent has Blackjack!')
+    elif sum_of_list(user)>21:
+            print('You went over, You Lose!')
+    elif sum_of_list(computer)>21:
+            print('Computer went over, You Won!')
+    elif sum_of_list(user)>sum_of_list(computer):
+            print('You Win!')
+    elif sum_of_list(user)<sum_of_list(computer):
+            print('You Lose!')
+    elif sum_of_list(user)==sum_of_list(computer):
+            print('Game Drawn!')
+    
+#MAIN 
+
 cards=[11,2,3,4,5,6,7,8,9,10,10,10,10]
 
 
@@ -39,12 +63,12 @@ while True:
                 want_user=want_card(user)
                 user.append(want_user)
                 print(f'Now your cards: {user} ,Current score: {sum_of_list(user)}')
-                if sum_of_list(user)>21:
+                if sum_of_list(user)>21 or blackjack(user)==0 or blackjack(computer)==0:
                     #print('Sum greater then 21, You Lose!')
                     break
                 want_comp=want_card(computer)
                 for _ in range(1):
-                    if want_comp+sum_of_list(computer)>21:
+                    if sum_of_list(computer)>17:
                         break
                     else:
                         computer.append(want_comp)
@@ -55,14 +79,7 @@ while True:
                 print('INVALID INPUT')
         
         print(f"Your cards: {user}, Score: {sum_of_list(user)}\nComputer's cards: {computer}, Score: {sum_of_list(computer)}")
-        if sum_of_list(user)>21:
-            print('Sum greater than 21, You Lose!')
-        elif sum_of_list(user)>sum_of_list(computer):
-            print('You Win!')
-        elif sum_of_list(user)<sum_of_list(computer):
-            print('You Lose!')
-        elif sum_of_list(user)==sum_of_list(computer):
-            print('Game Drawn!')
+        compare()
         
     elif prompt=='n':
         break
