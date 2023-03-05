@@ -8,12 +8,17 @@ def game(org,choice):
         print(f"You have {guesses} attempts remaining to guess the number.")
         guesses-=1
         guess=int(input('Make a guess: '))
+
         if guess<org:
             print('Too Low!\nGuess Again')
         elif guess>org:
             print('Too High!\nGuess Again')
+
         else:
             print(f'You got it! The answer was {guess}.')
+            break
+        if guesses==0:
+            print('Out of Guesses, GAME OVER!')
             break
 
 
@@ -22,4 +27,5 @@ print("I'm thinking of a number between 1 and 100.")
 diff=input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
 
 num=random.randint(1,101)
+#print(num)
 game(num,diff)
