@@ -1,5 +1,6 @@
 from game_data import data
 import random
+import os
 
 def game():
     A=random.choice(data)
@@ -19,13 +20,16 @@ def game():
         
         guess=input("Who has more followers? Type 'A' or 'B'.").lower()
         if guess=='a' and pop_a>pop_b:
+            os.system('cls')
             score+=1
             print(f"You're right! Current score={score}")
         elif guess=='b' and pop_b>pop_a:
+            os.system('cls')
             score+=1
             print(f"You're right! Current score={score}")
             A=B
         else:
+            os.system('cls')
             print(f"You're Wrong, Score: {score}")
             break
 
